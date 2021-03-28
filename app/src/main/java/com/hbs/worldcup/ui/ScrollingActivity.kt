@@ -1,16 +1,22 @@
-package com.hbs.worldcup
+package com.hbs.worldcup.ui
 
 import android.os.Bundle
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import com.hbs.domain.model.TestData
+import com.hbs.worldcup.R
 import com.hbs.worldcup.databinding.ActivityScrollingBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ScrollingActivity : AppCompatActivity() {
-
+    @Inject
+    lateinit var testData : TestData
     private lateinit var binding: ActivityScrollingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +31,7 @@ class ScrollingActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+        Toast.makeText(this, testData.data, Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
