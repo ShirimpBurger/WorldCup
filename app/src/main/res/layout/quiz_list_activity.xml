@@ -50,7 +50,7 @@
             tools:background="@drawable/gamjatwigim" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/new_quiz_viewpager"
+            android:id="@+id/large_card_recommend_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="256dp"
             android:layout_marginTop="40dp"
@@ -60,5 +60,6 @@
             tools:itemCount="2"
             tools:listitem="@layout/new_quiz_item"
             app:layout_constraintTop_toBottomOf="@id/title_textview" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
