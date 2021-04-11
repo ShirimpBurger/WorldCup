@@ -16,7 +16,7 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity() {
     }
 
     private fun bindActivity() = getActivityInitializer()
-        .takeIf { it.isUseTransition }
+        .takeIf { !it.isUseTransition }
         ?.let {
             binding = DataBindingUtil.setContentView(this, it.layoutId)
             binding.lifecycleOwner = this
