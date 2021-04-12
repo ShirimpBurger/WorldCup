@@ -3,80 +3,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
 
-    <com.google.android.material.card.MaterialCardView
+        <variable
+            name="item"
+            type="com.hbs.worldcup.ui.quizlist.LargeCardRecommend" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="360dp"
         android:layout_height="240dp"
         android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        app:cardPreventCornerOverlap="false"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Cut.UltraLargeComponent"
-        tools:cardBackgroundColor="@color/md_grey_200">
+        android:layout_marginEnd="12dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:background="@drawable/gamjatwigim">
+            android:background="@drawable/gamjatwigim"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Cut.UltraLargeComponent">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/quiz_bottom_container"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:alpha="0.4"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:shapeAppearance="@style/ShapeAppearanceOverlay.Cut.UltraLargeComponent" />
+        </com.google.android.material.imageview.ShapeableImageView>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/title_textview"
-                style="@style/TextAppearance.MaterialComponents.Headline5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="4dp"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/md_white_1000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/quiz_bottom_container"
-                tools:text="ShripmBurer" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/quiz_bottom_container"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:alpha="0.4"
+            android:background="@color/md_grey_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.Cut.UltraLargeComponent" />
 
-            <androidx.appcompat.widget.AppCompatRatingBar
-                android:id="@+id/ratingbar"
-                style="@style/SmallRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:numStars="5"
-                android:progressTint="@color/md_yellow_700"
-                android:rating="5"
-                android:stepSize="1"
-                app:layout_constraintStart_toStartOf="@id/title_textview"
-                app:layout_constraintTop_toBottomOf="@id/title_textview" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title_textview"
+            style="@style/TextAppearance.MaterialComponents.Headline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@{item.title}"
+            android:textColor="@color/md_white_1000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/quiz_bottom_container"
+            tools:text="ShripmBurer" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/rating_textview"
-                style="@style/TextAppearance.MaterialComponents.Caption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/md_white_1000"
-                app:layout_constraintBottom_toBottomOf="@id/ratingbar"
-                app:layout_constraintStart_toEndOf="@id/ratingbar"
-                app:layout_constraintTop_toTopOf="@id/ratingbar"
-                tools:text="(3)" />
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/ratingbar"
+            style="@style/SmallRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:numStars="5"
+            android:progressTint="@color/md_yellow_700"
+            android:rating="5"
+            android:stepSize="1"
+            app:layout_constraintStart_toStartOf="@id/title_textview"
+            app:layout_constraintTop_toBottomOf="@id/title_textview" />
 
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                app:chipIcon="@drawable/ic_love_chip"
-                app:chipBackgroundColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@id/title_textview"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/title_textview"
-                tools:text="Hello" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rating_textview"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/md_white_1000"
+            app:layout_constraintBottom_toBottomOf="@id/ratingbar"
+            app:layout_constraintStart_toEndOf="@id/ratingbar"
+            app:layout_constraintTop_toTopOf="@id/ratingbar"
+            tools:text="(3)" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="@{item.chipTitle}"
+            app:chipBackgroundColor="@color/white"
+            app:chipIcon="@drawable/ic_love_chip"
+            app:layout_constraintBottom_toBottomOf="@id/title_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title_textview"
+            tools:text="Hello" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
