@@ -1,8 +1,11 @@
 package com.hbs.worldcup.ui.quizlist
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hbs.domain.model.core.ActivityInitializer
 import com.hbs.worldcup.R
@@ -34,6 +37,16 @@ class QuizListActivity : BaseActivity<QuizListActivityBinding>() {
             adapter = largeCardRecommendAdapter
             layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         }
+        with(binding.bottomAppBar) {
+            setOnMenuItemClickListener { item: MenuItem? ->
+                toggleDarkTheme()
+                item?.let { toggleDarkThemeMenuIcon(it) }
+                true
+            }
+            toggleDarkThemeMenuIcon(menu.findItem(R.id.item_darktheme))
+        }
+
+
     }
 
     private fun observeViewModel() {
@@ -44,5 +57,26 @@ class QuizListActivity : BaseActivity<QuizListActivityBinding>() {
 
     private val recommendClickCallback = LargeCardRecommendAdapter.Callback { largeCardRecommend, _ ->
         startActivity(Intent(this, QuizActivity::class.java))
+    }
+
+    private fun checkDarkTheme(): Boolean {
+        val defaultNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return defaultNightMode == Configuration.UI_MODE_NIGHT_YES
+    }
+
+    private fun toggleDarkTheme() {
+        if (checkDarkTheme()) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+    }
+
+    private fun toggleDarkThemeMenuIcon(menuItem: MenuItem) {
+        if (checkDarkTheme()) {
+            menuItem.icon = resources.getDrawable(R.drawable.ic_moon_color)
+        } else {
+            menuItem.icon = resources.getDrawable(R.drawable.ic_moon)
+        }
     }
 }
