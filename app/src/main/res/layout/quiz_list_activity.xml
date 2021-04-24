@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+         <variable
+            name="callback"
+            type="com.hbs.worldcup.ui.quizlist.Callback" />
         <variable
             name="viewModel"
             type="com.hbs.worldcup.ui.quizlist.QuizListViewModel" />
@@ -34,6 +36,7 @@
                 android:layout_height="64dp"
                 android:layout_margin="16dp"
                 android:importantForAccessibility="no"
+                android:clickable="false"
                 app:layout_constraintBottom_toBottomOf="@id/profile_image_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/profile_image_view"
@@ -45,6 +48,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_margin="24dp"
+                android:onClick="@{view-> callback.onClick()}"
                 app:layout_constraintTop_toTopOf="@id/profile_container"
                 app:layout_constraintEnd_toEndOf="@id/profile_container"
                 app:layout_constraintStart_toStartOf="@id/profile_container"
@@ -125,6 +129,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/main_app_bar" />
 
+        <LinearLayout
+            android:id="@+id/popup_view"
+            android:layout_width="320dp"
+            android:layout_height="512dp"
+            android:background="@color/white"
+            android:elevation="12dp"
+            android:visibility="visible"
+            android:orientation="vertical" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>
