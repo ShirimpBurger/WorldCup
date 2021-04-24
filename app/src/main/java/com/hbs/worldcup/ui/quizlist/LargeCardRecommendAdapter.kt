@@ -5,9 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.hbs.domain.model.LargeCardRecommend
 import com.hbs.worldcup.databinding.NewQuizItemBinding
-
-data class LargeCardRecommend(val title:String, val thumbnail:String, val rating:String, val chipTitle:String)
 
 class LargeCardRecommendAdapter (private val callback: Callback) : ListAdapter<LargeCardRecommend, LargeCardRecommendAdapter.ViewHolder>(diffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

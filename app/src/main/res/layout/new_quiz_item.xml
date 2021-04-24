@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.hbs.worldcup.ui.quizlist.LargeCardRecommend" />
+            type="com.hbs.domain.model.LargeCardRecommend" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

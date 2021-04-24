@@ -5,13 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.hbs.domain.model.QuizItem
 import com.hbs.worldcup.databinding.QuizItemBinding
 import com.hbs.worldcup.ui.custom.ParallaxScrollingView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-
-//TODO : data, domain 분리시킬 예정입니다.
-data class QuizItem(val firstThumbnail: String, val secondThumbnail: String)
 
 class QuizViewPagerAdapter(private val completeQuizListener: CompleteQuizListener, private val progressListener: ProgressListener) :
     ListAdapter<QuizItem, QuizViewPagerAdapter.ViewHolder>(diffUtil) {
