@@ -2,6 +2,7 @@ package com.hbs.worldcup.ui.quiz
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import com.hbs.domain.model.QuizItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

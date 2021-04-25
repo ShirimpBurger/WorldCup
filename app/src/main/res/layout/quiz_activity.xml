@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{toolbarTitle}"
-            android:textColor="@color/black"
+            android:textColor="@color/black_with_darktheme"
             app:fontFamily="sans-serif"
             app:layout_constraintBottom_toBottomOf="@id/drawer_menu_view"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
             app:layout_constraintBottom_toBottomOf="@id/drawer_menu_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/drawer_menu_view"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Cut.MediumComponent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Radius.MediumComponent"
             tools:background="@drawable/gamjatwigim" />
 
         <androidx.viewpager2.widget.ViewPager2
