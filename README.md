@@ -46,4 +46,7 @@
 
 ![screen1](https://user-images.githubusercontent.com/22374750/115961615-1e594400-a552-11eb-8159-21c8048ba932.gif)
 
+### 2021.04.25. 알림뷰 작업
+<img src="https://user-images.githubusercontent.com/22374750/115998475-65af0580-a622-11eb-9c87-af18d8af2552.png" width="280" height="560" />
+
 
