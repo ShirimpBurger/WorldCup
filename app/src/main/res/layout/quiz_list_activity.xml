@@ -129,14 +129,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/main_app_bar" />
 
-        <LinearLayout
-            android:id="@+id/popup_view"
-            android:layout_width="320dp"
-            android:layout_height="512dp"
-            android:background="@color/white"
-            android:elevation="12dp"
-            android:visibility="visible"
-            android:orientation="vertical" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 </layout>

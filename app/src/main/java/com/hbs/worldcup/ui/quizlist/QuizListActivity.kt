@@ -91,22 +91,6 @@ class QuizListActivity : BaseActivity<QuizListActivityBinding>() {
             menuItem.icon = ContextCompat.getDrawable(this, R.drawable.ic_moon)
         }
     }
-
-    private fun motionToView(startView: View, endView: View) {
-        val transform = MaterialContainerTransform().apply {
-            // Manually tell the container transform which Views to transform between.
-            this.startView = startView
-            this.endView = endView
-
-            addTarget(endView)
-
-            pathMotion = MaterialArcMotion()
-            scrimColor = Color.TRANSPARENT
-        }
-
-        TransitionManager.beginDelayedTransition(binding.root as ViewGroup, transform)
-        endView.visibility = View.VISIBLE
-    }
 }
 
 fun interface Callback {
