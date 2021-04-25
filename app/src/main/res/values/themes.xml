@@ -40,4 +40,16 @@
 
     <style name="SmallRatingBar" parent="Widget.AppCompat.RatingBar.Small" />
 
+    <style name="RadiusBottomSheet" parent="Theme.Design.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/RadiusBottomSheetModal</item>
+
+    </style>
+
+    <style name="RadiusBottomSheetModal" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rounded_dialog</item>
+        <item name="behavior_fitToContents">true</item>
+        <item name="behavior_halfExpandedRatio">0.5</item>
+    </style>
 </resources>
