@@ -12,13 +12,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.transition.platform.MaterialArcMotion
-import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.hbs.domain.model.core.ActivityInitializer
 import com.hbs.worldcup.R
 import com.hbs.worldcup.core.BaseActivity
 import com.hbs.worldcup.databinding.QuizListActivityBinding
 import com.hbs.worldcup.ui.quiz.QuizActivity
+import com.hbs.worldcup.ui.quizlist.alarm.AlarmDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -53,7 +52,8 @@ class QuizListActivity : BaseActivity<QuizListActivityBinding>() {
             toggleDarkThemeMenuIcon(menu.findItem(R.id.item_darktheme))
         }
         binding.callback = Callback {
-            motionToView(binding.alarmView, binding.popupView)
+            AlarmDialog().show(supportFragmentManager, "ALARM_DIALOG")
+
         }
     }
 
