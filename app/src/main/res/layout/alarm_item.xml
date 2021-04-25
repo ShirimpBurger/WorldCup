@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="alarmItem"
+            type="com.hbs.domain.model.AlarmItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/thumbnail_imageview"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="24dp"
+            android:background="@color/teal_200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Radius.MediumComponent" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@{alarmItem.firstWord}"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/thumbnail_imageview"
+            app:layout_constraintEnd_toEndOf="@id/thumbnail_imageview"
+            app:layout_constraintStart_toStartOf="@id/thumbnail_imageview"
+            app:layout_constraintTop_toTopOf="@id/thumbnail_imageview"
+            tools:text="축" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title_textview"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-light"
+            android:includeFontPadding="false"
+            android:text="@{alarmItem.title}"
+            android:textColor="@color/black_with_darktheme"
+            app:layout_constraintStart_toEndOf="@id/thumbnail_imageview"
+            app:layout_constraintTop_toTopOf="@id/thumbnail_imageview"
+            tools:text="축하합니다." />
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/default_font_color"
+            android:text="@{alarmItem.subtitle}"
+            app:layout_constraintStart_toStartOf="@id/title_textview"
+            app:layout_constraintTop_toBottomOf="@id/title_textview"
+            tools:text="앱에 커다란 발자국을 남기셨습니다." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
