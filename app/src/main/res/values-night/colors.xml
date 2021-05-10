@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black_with_darktheme">#FFFFFF</color>
+    <color name="default_font_color">#E0E0E0</color>
     <color name="white">#000000</color>
 </resources>

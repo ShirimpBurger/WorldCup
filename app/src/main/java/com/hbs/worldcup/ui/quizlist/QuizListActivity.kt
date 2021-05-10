@@ -12,13 +12,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.transition.platform.MaterialArcMotion
-import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.hbs.domain.model.core.ActivityInitializer
 import com.hbs.worldcup.R
 import com.hbs.worldcup.core.BaseActivity
 import com.hbs.worldcup.databinding.QuizListActivityBinding
 import com.hbs.worldcup.ui.quiz.QuizActivity
+import com.hbs.worldcup.ui.quizlist.alarm.AlarmDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -53,7 +52,8 @@ class QuizListActivity : BaseActivity<QuizListActivityBinding>() {
             toggleDarkThemeMenuIcon(menu.findItem(R.id.item_darktheme))
         }
         binding.callback = Callback {
-            motionToView(binding.alarmView, binding.popupView)
+            AlarmDialog().show(supportFragmentManager, "ALARM_DIALOG")
+
         }
     }
 
@@ -90,22 +90,6 @@ class QuizListActivity : BaseActivity<QuizListActivityBinding>() {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             menuItem.icon = ContextCompat.getDrawable(this, R.drawable.ic_moon)
         }
-    }
-
-    private fun motionToView(startView: View, endView: View) {
-        val transform = MaterialContainerTransform().apply {
-            // Manually tell the container transform which Views to transform between.
-            this.startView = startView
-            this.endView = endView
-
-            addTarget(endView)
-
-            pathMotion = MaterialArcMotion()
-            scrimColor = Color.TRANSPARENT
-        }
-
-        TransitionManager.beginDelayedTransition(binding.root as ViewGroup, transform)
-        endView.visibility = View.VISIBLE
     }
 }
 
