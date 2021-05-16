@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@+id/dashboard_dest">
+
+    <fragment
+        android:id="@+id/dashboard_dest"
+        android:name="com.hbs.worldcup.ui.dashboard.DashboardFragment"
+        tools:layout="@layout/dashboard_fragment">
+
+        <action
+            android:id="@+id/dashboard_to_project_action"
+            app:destination="@id/project_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/project_dest"
+        android:name="com.hbs.worldcup.ui.project.ProjectFragment"
+        tools:layout="@layout/project_fragment">
+
+        <action
+            android:id="@+id/project_to_create_action"
+            app:destination="@id/create_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/create_dest"
+        android:name="com.hbs.worldcup.ui.create.CreateFragment"
+        tools:layout="@layout/create_fragment">
+
+        <action
+            android:id="@+id/create_to_history_action"
+            app:destination="@id/history_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/history_dest"
+        android:name="com.hbs.worldcup.ui.history.HistoryFragment"
+        tools:layout="@layout/dashboard_fragment">
+
+        <action
+            android:id="@+id/dashboard_to_project_action"
+            app:destination="@id/setting_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/setting_dest"
+        android:name="com.hbs.worldcup.ui.setting.SettingFragment"
+        tools:layout="@layout/setting_fragment">
+
+        <action
+            android:id="@+id/setting_to_dashboard_action"
+            app:destination="@id/dashboard_dest" />
+    </fragment>
+</navigation>
