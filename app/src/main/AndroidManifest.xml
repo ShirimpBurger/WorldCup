@@ -11,16 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorldCup">
         <activity
-            android:name=".ui.quizlist.QuizListActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.WorldCup.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.quizlist.QuizListActivity" />
         <activity android:name=".ui.quiz.QuizActivity" />
     </application>
 
