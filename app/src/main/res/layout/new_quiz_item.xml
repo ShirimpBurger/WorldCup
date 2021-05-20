@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.4"
-            android:background="@color/md_grey_700"
+            android:background="@color/md_gray_700"
             app:layout_constraintBottom_toBottomOf="parent"
             app:shapeAppearance="@style/ShapeAppearanceOverlay.Radius.UltraLargeComponent" />
 
@@ -83,7 +83,7 @@
             android:layout_marginBottom="12dp"
             android:layout_marginStart="8dp"
             android:numStars="5"
-            android:progressTint="@color/md_yellow_700"
+            android:progressTint="@color/yellow_700"
             android:rating="5"
             android:stepSize="1"
             app:layout_constraintStart_toStartOf="parent"
