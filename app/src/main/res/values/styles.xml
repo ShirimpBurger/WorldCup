@@ -21,7 +21,7 @@
         <item name="tabTextColor">@color/md_gray_400</item>
         <item name="tabIndicatorGravity">stretch</item>
         <item name="tabIndicatorColor">?attr/colorPrimary</item>
-        <item name="tabIndicator">@drawable/bg_tab_item</item>
+        <item name="tabIndicator">@drawable/rounded_tab_indicator</item>
         <item name="tabRippleColor">@android:color/transparent</item>
         <item name="tabIndicatorFullWidth">true</item>
         <item name="tabGravity">fill</item>
