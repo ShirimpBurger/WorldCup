@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.hbs.domain.model.LargeCardRecommend" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_item">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/card_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="18dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/gamjatwigim"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintDimensionRatio="H, 1.75:1"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Radius.LargeComponent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/title_text_view"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:includeFontPadding="false"
+                android:text="@{item.title}"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="@id/card_image_view"
+                app:layout_constraintTop_toBottomOf="@id/card_image_view"
+                tools:text="새우버거 놀리기 월드컵" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@{item.chipTitle}"
+                app:chipIcon="@drawable/ic_love_chip"
+                app:layout_constraintStart_toStartOf="@id/title_text_view"
+                app:layout_constraintTop_toBottomOf="@id/title_text_view"
+                tools:text="Hello" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
