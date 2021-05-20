@@ -2,12 +2,9 @@ package com.hbs.worldcup.ui.quizlist
 
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.Color
 import android.os.Bundle
-import android.transition.TransitionManager
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
@@ -17,7 +14,7 @@ import com.hbs.worldcup.R
 import com.hbs.worldcup.core.BaseActivity
 import com.hbs.worldcup.databinding.QuizListActivityBinding
 import com.hbs.worldcup.ui.quiz.QuizActivity
-import com.hbs.worldcup.ui.quizlist.alarm.AlarmDialog
+import com.hbs.worldcup.ui.dashboard.alarm.AlarmDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

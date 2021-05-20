@@ -1,4 +1,4 @@
-package com.hbs.worldcup.ui.quizlist.alarm
+package com.hbs.worldcup.ui.dashboard.alarm
 
 import android.os.Bundle
 import android.view.LayoutInflater
