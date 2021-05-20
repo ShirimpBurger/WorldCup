@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShapeAppearanceOverlay.Radius.MediumComponent" parent="ShapeAppearanceOverlay.Cut">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Radius.LargeComponent" parent="ShapeAppearanceOverlay.Cut">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Radius.UltraLargeComponent" parent="ShapeAppearanceOverlay.Cut">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="Widget.WorldCup.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabMode">scrollable</item>
+        <item name="tabSelectedTextColor">?attr/colorOnPrimary</item>
+        <item name="tabTextColor">@color/md_gray_400</item>
+        <item name="tabIndicatorGravity">stretch</item>
+        <item name="tabIndicatorColor">?attr/colorPrimary</item>
+        <item name="tabIndicator">@drawable/rounded_tab_indicator</item>
+        <item name="tabRippleColor">@android:color/transparent</item>
+        <item name="tabIndicatorFullWidth">true</item>
+        <item name="tabGravity">fill</item>
+    </style>
+
+</resources>
