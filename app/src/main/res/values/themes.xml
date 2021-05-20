@@ -23,28 +23,12 @@
 
     <style name="Theme.WorldCup.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="ShapeAppearanceOverlay.Radius.MediumComponent" parent="ShapeAppearanceOverlay.Cut">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">8dp</item>
-    </style>
-
-    <style name="ShapeAppearanceOverlay.Radius.LargeComponent" parent="ShapeAppearanceOverlay.Cut">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12dp</item>
-    </style>
-
-    <style name="ShapeAppearanceOverlay.Radius.UltraLargeComponent" parent="ShapeAppearanceOverlay.Cut">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">24dp</item>
-    </style>
-
     <style name="SmallRatingBar" parent="Widget.AppCompat.RatingBar.Small" />
 
     <style name="RadiusBottomSheet" parent="Theme.Design.BottomSheetDialog">
         <item name="android:windowIsFloating">false</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="bottomSheetStyle">@style/RadiusBottomSheetModal</item>
-
     </style>
 
     <style name="RadiusBottomSheetModal" parent="Widget.Design.BottomSheet.Modal">
