@@ -25,6 +25,42 @@
     <color name="md_black_1000">#000000</color>
     <color name="md_white_1000">#ffffff</color>
 
+    <!--blue-->
+    <color name="blue_50">#e8eafd</color>
+    <color name="blue_100">#c5cbfa</color>
+    <color name="blue_200">#9daaf8</color>
+    <color name="blue_300">#7087f5</color>
+    <color name="blue_400">#486bf3</color>
+    <color name="blue_500">#004fee</color>
+    <color name="blue_600">#0047e2</color>
+    <color name="blue_700">#003cd6</color>
+    <color name="blue_800">#0030cb</color>
+    <color name="blue_900">#0017ba</color>
+
+    <!--red-->
+    <color name="md_red_50">#FFEBEE</color>
+    <color name="md_red_100">#FFCDD2</color>
+    <color name="md_red_200">#EF9A9A</color>
+    <color name="md_red_300">#E57373</color>
+    <color name="md_red_400">#EF5350</color>
+    <color name="md_red_500">#F44336</color>
+    <color name="md_red_600">#E53935</color>
+    <color name="md_red_700">#D32F2F</color>
+    <color name="md_red_800">#C62828</color>
+    <color name="md_red_900">#B71C1C</color>
+
+    <!--grey-->
+    <color name="md_gray_50">#FAFAFA</color>
+    <color name="md_gray_100">#F5F5F5</color>
+    <color name="md_gray_200">#EEEEEE</color>
+    <color name="md_gray_300">#E0E0E0</color>
+    <color name="md_gray_400">#BDBDBD</color>
+    <color name="md_gray_500">#9E9E9E</color>
+    <color name="md_gray_600">#757575</color>
+    <color name="md_gray_700">#616161</color>
+    <color name="md_gray_800">#424242</color>
+    <color name="md_gray_900">#212121</color>
+
     <!--yellow -->
     <color name="md_yellow_50">#FFFDE7</color>
     <color name="md_yellow_100">#FFF9C4</color>
