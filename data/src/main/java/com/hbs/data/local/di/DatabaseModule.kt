@@ -27,8 +27,8 @@ object DatabaseModule{
         ).addCallback(object : RoomDatabase.Callback() {
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
-                db.execSQL("insert into SettingEntity (task, isUse) values ('Notification', true)")
-                db.execSQL("insert into SettingEntity (task, isUse) values ('Alternative', true)")
+                db.execSQL("insert into SettingEntity (task, isUse) values ('Notification', 1)")
+                db.execSQL("insert into SettingEntity (task, isUse) values ('Alternative', 1)")
             }
         }).build()
 }
