@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.transition.platform.MaterialArcMotion
 import com.google.android.material.transition.platform.MaterialContainerTransform
-import com.hbs.domain.model.core.ActivityInitializer
+import com.hbs.worldcup.models.ActivityInitializer
 
 abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity() {
     lateinit var binding: B

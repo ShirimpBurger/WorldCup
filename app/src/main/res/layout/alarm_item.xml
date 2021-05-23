@@ -49,7 +49,7 @@
             android:fontFamily="sans-serif-light"
             android:includeFontPadding="false"
             android:text="@{alarmItem.title}"
-            android:textColor="@color/black_with_darktheme"
+            android:textColor="@color/alternative_black_100"
             app:layout_constraintStart_toEndOf="@id/thumbnail_imageview"
             app:layout_constraintTop_toTopOf="@id/thumbnail_imageview"
             tools:text="축하합니다." />

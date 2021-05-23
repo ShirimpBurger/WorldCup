@@ -47,3 +47,7 @@ private val diffUtil = object : DiffUtil.ItemCallback<LargeCardRecommend>() {
         return oldItem == newItem
     }
 }
+
+fun interface Callback {
+    fun onClick()
+}

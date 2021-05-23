@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{toolbarTitle}"
-            android:textColor="@color/black_with_darktheme"
+            android:textColor="@color/alternative_black_100"
             app:fontFamily="sans-serif"
             app:layout_constraintBottom_toBottomOf="@id/drawer_menu_view"
             app:layout_constraintEnd_toEndOf="parent"

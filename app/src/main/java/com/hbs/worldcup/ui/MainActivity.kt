@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.hbs.domain.model.core.ActivityInitializer
+import com.hbs.worldcup.models.ActivityInitializer
 import com.hbs.worldcup.R
 import com.hbs.worldcup.core.BaseActivity
 import com.hbs.worldcup.databinding.MainActivityBinding

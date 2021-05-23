@@ -5,13 +5,23 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-
-    <color name="black_with_darktheme">#FF000000</color>
+    <color name="alternative_black_100">#FF000000</color>
     <color name="default_font_color">#616161</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorAccent">#F9AA33</color>
 
-    <color name="colorAccent">#FFB902</color>
 
+    <!--grey-->
+    <color name="md_grey_50">#FAFAFA</color>
+    <color name="md_grey_100">#F5F5F5</color>
+    <color name="md_grey_200">#EEEEEE</color>
+    <color name="md_grey_300">#E0E0E0</color>
+    <color name="md_grey_400">#BDBDBD</color>
+    <color name="md_grey_500">#9E9E9E</color>
+    <color name="md_grey_600">#757575</color>
+    <color name="md_grey_700">#616161</color>
+    <color name="md_grey_800">#424242</color>
+    <color name="md_grey_900">#212121</color>
     <color name="md_black_1000">#000000</color>
     <color name="md_white_1000">#ffffff</color>
 
@@ -52,14 +62,18 @@
     <color name="md_gray_900">#212121</color>
 
     <!--yellow -->
-    <color name="yellow_50">#fff9e1</color>
-    <color name="yellow_100">#feedb4</color>
-    <color name="yellow_200">#fee283</color>
-    <color name="yellow_300">#fed851</color>
-    <color name="yellow_400">#fece2a</color>
-    <color name="yellow_500">#ffc50c</color>
-    <color name="yellow_600">#ffb702</color>
-    <color name="yellow_700">#ffa400</color>
-    <color name="yellow_800">#ff9300</color>
-    <color name="yellow_900">#ff7400</color>
+    <color name="md_yellow_50">#FFFDE7</color>
+    <color name="md_yellow_100">#FFF9C4</color>
+    <color name="md_yellow_200">#FFF590</color>
+    <color name="md_yellow_300">#FFF176</color>
+    <color name="md_yellow_400">#FFEE58</color>
+    <color name="md_yellow_500">#FFEB3B</color>
+    <color name="md_yellow_600">#FDD835</color>
+    <color name="md_yellow_700">#FBC02D</color>
+    <color name="md_yellow_800">#F9A825</color>
+    <color name="md_yellow_900">#F57F17</color>
+    <color name="md_yellow_A100">#FFFF82</color>
+    <color name="md_yellow_A200">#FFFF00</color>
+    <color name="md_yellow_A400">#FFEA00</color>
+    <color name="md_yellow_A700">#FFD600</color>
 </resources>
