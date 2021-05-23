@@ -3,7 +3,7 @@ package com.hbs.worldcup.ui.quiz
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
-import com.hbs.domain.model.core.ActivityInitializer
+import com.hbs.worldcup.models.ActivityInitializer
 import com.hbs.worldcup.R
 import com.hbs.worldcup.core.BaseActivity
 import com.hbs.worldcup.databinding.QuizActivityBinding

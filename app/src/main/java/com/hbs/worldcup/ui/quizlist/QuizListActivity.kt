@@ -2,17 +2,14 @@ package com.hbs.worldcup.ui.quizlist
 
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.Color
 import android.os.Bundle
-import android.transition.TransitionManager
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hbs.domain.model.core.ActivityInitializer
+import com.hbs.worldcup.models.ActivityInitializer
 import com.hbs.worldcup.R
 import com.hbs.worldcup.core.BaseActivity
 import com.hbs.worldcup.databinding.QuizListActivityBinding
@@ -23,7 +20,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class QuizListActivity : BaseActivity<QuizListActivityBinding>() {
     private val quizListViewModel by viewModels<QuizListViewModel>()
-    private val largeCardRecommendAdapter by lazy { LargeCardRecommendAdapter(recommendClickCallback) }
+    private val largeCardRecommendAdapter by lazy {
+        LargeCardRecommendAdapter(recommendClickCallback)
+    }
 
     override fun getActivityInitializer() = ActivityInitializer(R.layout.quiz_list_activity, false)
 
@@ -64,7 +63,7 @@ class QuizListActivity : BaseActivity<QuizListActivityBinding>() {
     }
 
     private val recommendClickCallback =
-        LargeCardRecommendAdapter.Callback { largeCardRecommend, _ ->
+        LargeCardRecommendAdapter.Callback { _, _ ->
             startActivity(Intent(this, QuizActivity::class.java))
         }
 
@@ -91,8 +90,4 @@ class QuizListActivity : BaseActivity<QuizListActivityBinding>() {
             menuItem.icon = ContextCompat.getDrawable(this, R.drawable.ic_moon)
         }
     }
-}
-
-fun interface Callback {
-    fun onClick()
 }
