@@ -15,6 +15,11 @@
         <item name="cornerSize">24dp</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay.Radius.CircleComponent" parent="ShapeAppearanceOverlay.Cut">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
     <style name="Widget.WorldCup.TabLayout" parent="Widget.MaterialComponents.TabLayout">
         <item name="tabMode">scrollable</item>
         <item name="tabSelectedTextColor">?attr/colorOnPrimary</item>
@@ -25,6 +30,27 @@
         <item name="tabRippleColor">@android:color/transparent</item>
         <item name="tabIndicatorFullWidth">true</item>
         <item name="tabGravity">fill</item>
+    </style>
+
+
+    <style name="RadiusBottomSheet" parent="Theme.Design.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/RadiusBottomSheetModal</item>
+    </style>
+
+    <style name="RadiusBottomSheetModal" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rounded_dialog</item>
+        <item name="behavior_fitToContents">true</item>
+        <item name="behavior_halfExpandedRatio">0.5</item>
+    </style>
+
+    <style name="OutlineRadiusButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingEnd">32dp</item>
+        <item name="cornerRadius">24dp</item>
     </style>
 
 </resources>
