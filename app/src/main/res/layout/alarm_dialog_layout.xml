@@ -16,7 +16,7 @@
             android:layout_marginBottom="12dp"
             android:fontFamily="sans-serif-light"
             android:text="Notifications"
-            android:textColor="@color/black_with_darktheme"
+            android:textColor="@color/alternative_black_100"
             app:layout_constraintBottom_toBottomOf="@id/icon_imageview"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/icon_imageview" />

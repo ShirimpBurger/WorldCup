@@ -1,12 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="SETTING"
-        android:gravity="center" />
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile_image_view"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_margin="24dp"
+            android:background="@drawable/gamjatwigim"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Radius.CircleComponent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/name_textview"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="GamjaTwigim"
+            android:textColor="@color/alternative_black_100"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_image_view" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/email_textview"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="GamjaTwigim"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_textview" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/profile_button"
+            style="@style/OutlineRadiusButton"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-light"
+            android:text="View Profile"
+            app:icon="@drawable/ic_alphabet_a"
+            app:iconPadding="8dp"
+            app:iconSize="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email_textview"
+            app:strokeColor="@color/design_default_color_primary_variant" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/setting_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_button"
+            tools:listitem="@layout/one_line_with_title_card_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
