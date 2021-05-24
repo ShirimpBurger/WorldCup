@@ -2,50 +2,46 @@ package com.hbs.worldcup.ui.dashboard
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.hbs.worldcup.R
+import com.hbs.worldcup.core.BaseFragment
 import com.hbs.worldcup.databinding.DashboardFragmentBinding
+import com.hbs.worldcup.models.FragmentInitializer
 import com.hbs.worldcup.ui.quiz.QuizActivity
 import com.hbs.worldcup.ui.dashboard.alarm.AlarmDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DashboardFragment : Fragment() {
-
-    private lateinit var binding:DashboardFragmentBinding
+class DashboardFragment : BaseFragment<DashboardFragmentBinding>() {
     private val viewModel by viewModels<DashboardViewModel>()
-    private val listAdapter by lazy { DashboardListAdapter(clickCallback) }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DashboardFragmentBinding.inflate(layoutInflater)
+    private val dashboardAdapter = DashboardListAdapter { card, _ ->
+        startActivity(Intent(context, QuizActivity::class.java))
+    }.apply {
+        setHasStableIds(true)
+    }
 
+    override fun getFragmentInitializer(): FragmentInitializer =
+        FragmentInitializer(R.layout.dashboard_fragment)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        bindAdapter()
         bindViewModel()
         bindView()
         observeViewModel()
-        return binding.root
     }
-
-    private val clickCallback =
-        DashboardListAdapter.Callback { card, _ ->
-            startActivity(Intent(context, QuizActivity::class.java))
-        }
 
     private fun bindViewModel() {
         binding.viewModel = viewModel
     }
 
-    private fun bindView() {
-        with(binding.dashboardRecyclerView) {
-            adapter = listAdapter
-        }
+    private fun bindAdapter(){
+        binding.dashboardRecyclerView.adapter = dashboardAdapter
+    }
 
+    private fun bindView() {
         binding.callback = Callback {
             AlarmDialog().show(parentFragmentManager, "ALARM_DIALOG")
         }
@@ -53,7 +49,7 @@ class DashboardFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.largeCardList.observe(viewLifecycleOwner, {
-            listAdapter.submitList(it)
+            dashboardAdapter.submitList(it)
         })
     }
 

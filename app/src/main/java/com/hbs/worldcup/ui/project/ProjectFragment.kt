@@ -1,22 +1,19 @@
 package com.hbs.worldcup.ui.project
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.hbs.worldcup.databinding.DashboardFragmentBinding
+import com.hbs.worldcup.R
+import com.hbs.worldcup.core.BaseFragment
 import com.hbs.worldcup.databinding.ProjectFragmentBinding
+import com.hbs.worldcup.models.FragmentInitializer
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProjectFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val binding = ProjectFragmentBinding.inflate(layoutInflater)
-        return binding.root
+class ProjectFragment : BaseFragment<ProjectFragmentBinding>() {
+
+    override fun getFragmentInitializer(): FragmentInitializer = FragmentInitializer(R.layout.project_fragment)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 }
