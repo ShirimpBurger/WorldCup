@@ -20,21 +20,21 @@ data class OneLineWithTaskItem(
     }
 
     private fun getSubtitleText(isUse: Boolean) = if (isUse) {
-        "Turn on"
+        "On"
     } else {
-        "Turn off"
+        "Off"
     }
 
     private fun getImageIcon(task: String, isUse: Boolean): Int {
         return when (task) {
             StingConfigs.NOTIFICATION -> {
-                if(isUse) { R.drawable.ic_moon_color } else { R.drawable.ic_moon }
+                R.drawable.ic_notification_fill
             }
             StingConfigs.ALTERNATIVE -> {
-                if(isUse) { R.drawable.ic_moon_color } else { R.drawable.ic_moon }
+                R.drawable.ic_moon
             }
             else -> {
-                if(isUse) { R.drawable.ic_moon_color } else { R.drawable.ic_moon }
+                if(isUse) { R.drawable.ic_moon } else { R.drawable.ic_moon }
             }
         }
     }
