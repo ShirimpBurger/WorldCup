@@ -3,22 +3,19 @@ package com.hbs.worldcup.ui.setting
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
+import com.google.android.material.snackbar.Snackbar
 import com.hbs.worldcup.R
 import com.hbs.worldcup.core.BaseFragment
 import com.hbs.worldcup.databinding.SettingFragmentBinding
 import com.hbs.worldcup.models.FragmentInitializer
+import com.hbs.worldcup.models.OneLineWithTaskItem
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
 
 @AndroidEntryPoint
 class SettingFragment : BaseFragment<SettingFragmentBinding>() {
-    private val viewModel : SettingViewModel by viewModels()
+    private val viewModel: SettingViewModel by viewModels()
     private val settingAdapter = SettingAdapter {
+        showSnackBar(it)
         viewModel.insertAndSelectedAllItems(it)
     }.apply {
         setHasStableIds(true)
@@ -40,5 +37,18 @@ class SettingFragment : BaseFragment<SettingFragmentBinding>() {
         viewModel.settingItems.observe(viewLifecycleOwner, {
             settingAdapter.submitList(it)
         })
+    }
+
+    private fun showSnackBar(item: OneLineWithTaskItem) {
+        val message = if (item.isUse) {
+            "ON ".plus(item.task)
+        } else {
+            "OFF ".plus(item.task)
+        }
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).setAction("Cancel") {
+            it.postDelayed({
+                viewModel.insertAndSelectedAllItems(item.copy(isUse = !item.isUse))
+            }, 200L)
+        }.show()
     }
 }
