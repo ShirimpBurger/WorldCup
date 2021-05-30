@@ -6,6 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="alternative_black_100">#FF000000</color>
+    <color name="alternative_md_grey_800">#424242</color>
     <color name="default_font_color">#616161</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorAccent">#F9AA33</color>
