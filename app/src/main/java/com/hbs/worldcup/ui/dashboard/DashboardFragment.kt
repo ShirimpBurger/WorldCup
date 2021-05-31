@@ -2,34 +2,29 @@ package com.hbs.worldcup.ui.dashboard
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.hbs.worldcup.R
+import com.hbs.worldcup.core.BaseFragment
 import com.hbs.worldcup.databinding.DashboardFragmentBinding
-import com.hbs.worldcup.ui.quiz.QuizActivity
+import com.hbs.worldcup.models.FragmentInitializer
+import com.hbs.worldcup.ui.dashboard.DashboardFragment.Callback
 import com.hbs.worldcup.ui.dashboard.alarm.AlarmDialog
+import com.hbs.worldcup.ui.quiz.QuizActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DashboardFragment : Fragment() {
-
-    private lateinit var binding:DashboardFragmentBinding
-    private val viewModel by viewModels<DashboardViewModel>()
+class DashboardFragment : BaseFragment<DashboardFragmentBinding>() {
+    private val viewModel : DashboardViewModel by viewModels()
     private val listAdapter by lazy { DashboardListAdapter(clickCallback) }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DashboardFragmentBinding.inflate(layoutInflater)
+    override fun getFragmentInitializer() = FragmentInitializer(R.layout.dashboard_fragment)
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         bindViewModel()
         bindView()
         observeViewModel()
-        return binding.root
     }
 
     private val clickCallback =
