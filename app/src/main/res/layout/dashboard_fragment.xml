@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="callback"
             type="com.hbs.worldcup.ui.dashboard.DashboardFragment.Callback" />
@@ -17,85 +18,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profile_image_view"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_margin="24dp"
-                android:background="@drawable/gamjatwigim"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Radius.UltraLargeComponent" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/profile_container"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_margin="16dp"
-                android:clickable="false"
-                android:importantForAccessibility="no"
-                app:backgroundTint="@color/md_white_1000"
-                app:elevation="0dp"
-                app:layout_constraintBottom_toBottomOf="@id/profile_image_view"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/profile_image_view" />
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/alarm_view"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="24dp"
-                android:onClick="@{view-> callback.onClick()}"
-                app:layout_constraintBottom_toBottomOf="@id/profile_container"
-                app:layout_constraintEnd_toEndOf="@id/profile_container"
-                app:layout_constraintStart_toStartOf="@id/profile_container"
-                app:layout_constraintTop_toTopOf="@id/profile_container"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/notification"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Radius.MediumComponent"
-                tools:background="@drawable/ic_launcher_background" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/hello_text_view"
-                style="@style/TextAppearance.MaterialComponents.Headline4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:fontFamily="sans-serif-light"
-                android:includeFontPadding="false"
-                android:text="Hello,"
-                android:textColor="@color/alternative_black_100"
-                app:layout_constraintStart_toStartOf="@id/profile_image_view"
-                app:layout_constraintTop_toBottomOf="@id/profile_image_view" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/greeting_text_view"
-                style="@style/TextAppearance.MaterialComponents.Headline4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:fontFamily="sans-serif-light"
-                android:includeFontPadding="false"
-                android:text="@{viewModel.title}"
-                android:textColor="@color/alternative_black_100"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/hello_text_view"
-                app:layout_constraintTop_toBottomOf="@id/hello_text_view"
-                tools:text="Gamjatwigim!! 👋" />
+            <include
+                layout="@layout/dashboard_header_content"
+                app:viewModel="@{viewModel}"
+                app:callback="@{callback}" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/dashboard_tab_layout"
                 style="@style/Widget.WorldCup.TabLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_marginTop="32dp"
-                app:layout_constraintStart_toStartOf="@id/greeting_text_view"
-                app:layout_constraintTop_toBottomOf="@id/greeting_text_view">
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
@@ -108,35 +48,17 @@
                     android:text="Recommend" />
             </com.google.android.material.tabs.TabLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/dashboard_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/dashboard_tab_layout"
-                tools:itemCount="10"
-                tools:listitem="@layout/large_card_item" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
-            style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dashboard_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:fitsSystemWindows="true"
-            android:visibility="gone"
-            app:backgroundTint="@color/md_black_1000"
-            app:elevation="16dp"
-            app:fabAlignmentMode="end"
-            app:fabAnimationMode="slide"
-            app:fabCradleMargin="8dp"
-            app:fabCradleRoundedCornerRadius="12dp"
-            app:fabCradleVerticalOffset="0dp"
-            app:hideOnScroll="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/main_app_bar" />
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:itemCount="10"
+            tools:listitem="@layout/large_card_item" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
