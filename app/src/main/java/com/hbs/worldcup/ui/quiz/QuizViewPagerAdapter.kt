@@ -3,8 +3,6 @@ package com.hbs.worldcup.ui.quiz
 import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -14,8 +12,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 
 class QuizViewPagerAdapter(
-    private val completeQuizListener: CompleteQuizListener,
-    private val progressListener: ProgressListener
+    private val completeQuizListener: CompleteQuizListener
 ) :
     ListAdapter<QuizItem, QuizViewPagerAdapter.ViewHolder>(diffUtil) {
     class ViewHolder(val binding: QuizItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -43,12 +40,27 @@ class QuizViewPagerAdapter(
             parallaxScrollingView.scrollTo(deviceWidth / 2, 0)
         }
 
-
         parallaxScrollingView.setOnScrollChangeListener { _, scrollX, _, _, _ ->
+            if (scrollX == 0) {
+                parallaxScrollingView.postDelayed({
+                    if(scrollX < 50) {
+                        completeQuizListener.complete(position + 1)
+                    }
+                }, 1000L)
+                completeQuizListener.complete(position + 1)
+            } else if (scrollX >= deviceWidth) {
+                parallaxScrollingView.postDelayed({
+                    if(scrollX > deviceWidth - 50) {
+                        completeQuizListener.complete(position + 1)
+                    }
+                }, 1000L)
+                completeQuizListener.complete(position + 1)
+            }
             if (deviceWidth / 2 > scrollX) {
                 holder.binding.selectionAImageView.translationX = (scrollX / 2).toFloat()
             } else {
-                holder.binding.selectionAImageView.translationX = (deviceWidth / 2) - (scrollX / 2).toFloat()
+                holder.binding.selectionAImageView.translationX =
+                    (deviceWidth / 2) - (scrollX / 2).toFloat()
             }
         }
     }

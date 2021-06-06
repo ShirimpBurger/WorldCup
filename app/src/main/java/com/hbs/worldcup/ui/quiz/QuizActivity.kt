@@ -8,20 +8,21 @@ import com.hbs.worldcup.R
 import com.hbs.worldcup.core.BaseActivity
 import com.hbs.worldcup.databinding.QuizActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class QuizActivity : BaseActivity<QuizActivityBinding>() {
     private val viewModel by viewModels<QuizViewModel>()
     private val quizViewPagerAdapter by lazy {
-        QuizViewPagerAdapter(nextQuizListener, progressListener)
+        QuizViewPagerAdapter(nextQuizListener)
     }
 
     private val nextQuizListener = QuizViewPagerAdapter.CompleteQuizListener { position ->
-        binding.quizViewpager.currentItem = position + 1
+        viewModel.sendTime(Date().time)
     }
 
     private val progressListener = QuizViewPagerAdapter.ProgressListener { progress ->
-        binding.lottieView.progress = progress
+
     }
 
     override fun getActivityInitializer(): ActivityInitializer =
@@ -50,6 +51,12 @@ class QuizActivity : BaseActivity<QuizActivityBinding>() {
     private fun observeViewModel() {
         viewModel.quizList.observe(this, {
             quizViewPagerAdapter.submitList(it)
+        })
+
+        viewModel.nextStage.observe(this, {
+            if(it.peekContent() == "GO") {
+                binding.quizViewpager.currentItem = binding.quizViewpager.currentItem + 1
+            }
         })
     }
 }
