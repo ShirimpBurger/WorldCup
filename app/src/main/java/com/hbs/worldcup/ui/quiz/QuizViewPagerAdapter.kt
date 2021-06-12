@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hbs.domain.model.QuizItem
+import com.hbs.worldcup.models.GameLayoutPair
 import com.hbs.worldcup.databinding.QuizItemBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -14,8 +14,9 @@ import kotlinx.coroutines.FlowPreview
 class QuizViewPagerAdapter(
     private val completeQuizListener: CompleteQuizListener
 ) :
-    ListAdapter<QuizItem, QuizViewPagerAdapter.ViewHolder>(diffUtil) {
+    ListAdapter<GameLayoutPair, QuizViewPagerAdapter.ViewHolder>(diffUtil) {
     class ViewHolder(val binding: QuizItemBinding) : RecyclerView.ViewHolder(binding.root)
+
 
     private val deviceWidth by lazy {
         Resources.getSystem().displayMetrics.widthPixels
@@ -35,6 +36,8 @@ class QuizViewPagerAdapter(
     @FlowPreview
     @ExperimentalCoroutinesApi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.binding.quizItem = getItem(position)
+
         val parallaxScrollingView = holder.binding.scrollView
         parallaxScrollingView.post {
             parallaxScrollingView.scrollTo(deviceWidth / 2, 0)
@@ -63,6 +66,7 @@ class QuizViewPagerAdapter(
                     (deviceWidth / 2) - (scrollX / 2).toFloat()
             }
         }
+
     }
 
     fun interface CompleteQuizListener {
@@ -75,12 +79,12 @@ class QuizViewPagerAdapter(
 }
 
 private val diffUtil = object :
-    DiffUtil.ItemCallback<QuizItem>() {
-    override fun areItemsTheSame(oldItem: QuizItem, newItem: QuizItem): Boolean {
+    DiffUtil.ItemCallback<GameLayoutPair>() {
+    override fun areItemsTheSame(oldItem: GameLayoutPair, newItem: GameLayoutPair): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: QuizItem, newItem: QuizItem): Boolean {
+    override fun areContentsTheSame(oldItem: GameLayoutPair, newItem: GameLayoutPair): Boolean {
         return oldItem == newItem
     }
 }
