@@ -6,21 +6,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hbs.worldcup.models.GameLayoutPair
 import com.hbs.worldcup.databinding.QuizItemBinding
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
+import com.hbs.worldcup.models.GameLayoutPair
+import kotlinx.coroutines.*
+import java.util.*
 
 class QuizViewPagerAdapter(
-    private val completeQuizListener: CompleteQuizListener
+    private val viewModel: QuizViewModel,
 ) :
     ListAdapter<GameLayoutPair, QuizViewPagerAdapter.ViewHolder>(diffUtil) {
-    class ViewHolder(val binding: QuizItemBinding) : RecyclerView.ViewHolder(binding.root)
-
-
     private val deviceWidth by lazy {
         Resources.getSystem().displayMetrics.widthPixels
     }
+
+    private val job = mutableListOf<Job>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = QuizItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -37,27 +36,19 @@ class QuizViewPagerAdapter(
     @ExperimentalCoroutinesApi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.quizItem = getItem(position)
-
         val parallaxScrollingView = holder.binding.scrollView
         parallaxScrollingView.post {
             parallaxScrollingView.scrollTo(deviceWidth / 2, 0)
         }
 
         parallaxScrollingView.setOnScrollChangeListener { _, scrollX, _, _, _ ->
-            if (scrollX == 0) {
-                parallaxScrollingView.postDelayed({
-                    if(scrollX < 50) {
-                        completeQuizListener.complete(position + 1)
-                    }
-                }, 1000L)
-                completeQuizListener.complete(position + 1)
-            } else if (scrollX >= deviceWidth) {
-                parallaxScrollingView.postDelayed({
-                    if(scrollX > deviceWidth - 50) {
-                        completeQuizListener.complete(position + 1)
-                    }
-                }, 1000L)
-                completeQuizListener.complete(position + 1)
+            if (scrollX < 50) {
+                job.add(callNextStage(position))
+            } else if (scrollX >= deviceWidth - 50) {
+                job.add(callNextStage(position))
+            } else {
+                job.forEach{it.cancel()}
+                viewModel.sendTime(position, -99999999999999L)
             }
             if (deviceWidth / 2 > scrollX) {
                 holder.binding.selectionAImageView.translationX = (scrollX / 2).toFloat()
@@ -66,16 +57,20 @@ class QuizViewPagerAdapter(
                     (deviceWidth / 2) - (scrollX / 2).toFloat()
             }
         }
-
     }
 
-    fun interface CompleteQuizListener {
-        fun complete(position: Int)
+    private fun callNextStage(position: Int): Job {
+        return GlobalScope.launch {
+            viewModel.sendTime(position, Date().time)
+            delay(1_000L)
+            if(isActive) {
+                viewModel.sendTime(position, Date().time)
+            }
+        }
     }
 
-    fun interface ProgressListener {
-        fun progress(progress: Float)
-    }
+    class ViewHolder(val binding: QuizItemBinding) : RecyclerView.ViewHolder(binding.root)
+
 }
 
 private val diffUtil = object :
