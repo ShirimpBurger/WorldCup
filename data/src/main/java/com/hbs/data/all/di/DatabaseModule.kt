@@ -1,4 +1,4 @@
-package com.hbs.data.local.di
+package com.hbs.data.all.di
 
 import android.content.Context
 import androidx.room.Room

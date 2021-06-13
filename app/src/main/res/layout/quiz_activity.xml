@@ -26,7 +26,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title_textview"
-            style="@style/TextAppearance.MaterialComponents.Headline4"
+            style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{toolbarTitle}"
@@ -37,19 +37,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/drawer_menu_view"
             tools:text="Versus" />
-
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottie_view"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginEnd="16dp"
-            app:lottie_rawRes="@raw/taco"
-            app:layout_constraintBottom_toBottomOf="@id/drawer_menu_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/drawer_menu_view"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Radius.MediumComponent"
-            tools:background="@drawable/gamjatwigim" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/quiz_viewpager"

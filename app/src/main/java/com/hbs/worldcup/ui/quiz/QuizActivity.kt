@@ -7,21 +7,25 @@ import com.hbs.worldcup.models.ActivityInitializer
 import com.hbs.worldcup.R
 import com.hbs.worldcup.core.BaseActivity
 import com.hbs.worldcup.databinding.QuizActivityBinding
+import com.hbs.worldcup.models.onError
+import com.hbs.worldcup.models.onLoading
+import com.hbs.worldcup.models.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class QuizActivity : BaseActivity<QuizActivityBinding>() {
     private val viewModel by viewModels<QuizViewModel>()
     private val quizViewPagerAdapter by lazy {
-        QuizViewPagerAdapter(nextQuizListener, progressListener)
+        QuizViewPagerAdapter(nextQuizListener)
     }
 
-    private val nextQuizListener = QuizViewPagerAdapter.CompleteQuizListener { position ->
-        binding.quizViewpager.currentItem = position + 1
+    private val nextQuizListener = QuizViewPagerAdapter.CompleteQuizListener {
+        viewModel.sendTime(Date().time)
     }
 
-    private val progressListener = QuizViewPagerAdapter.ProgressListener { progress ->
-        binding.lottieView.progress = progress
+    private val progressListener = QuizViewPagerAdapter.ProgressListener {
+
     }
 
     override fun getActivityInitializer(): ActivityInitializer =
@@ -32,6 +36,7 @@ class QuizActivity : BaseActivity<QuizActivityBinding>() {
         bindViewModel()
         bindView()
         observeViewModel()
+        collectQuizList()
     }
 
     private fun bindViewModel() {
@@ -48,8 +53,20 @@ class QuizActivity : BaseActivity<QuizActivityBinding>() {
     }
 
     private fun observeViewModel() {
-        viewModel.quizList.observe(this, {
-            quizViewPagerAdapter.submitList(it)
+        viewModel.quizResult.observe(this, { quizResult ->
+            quizResult.onSuccess { quizViewPagerAdapter.submitList(it) }
+                .onError {  }
+                .onLoading {  }
         })
+
+        viewModel.nextStage.observe(this, {
+            if(it.peekContent() == "GO") {
+                binding.quizViewpager.currentItem = binding.quizViewpager.currentItem + 1
+            }
+        })
+    }
+
+    private fun collectQuizList() {
+        viewModel.requestQuizList()
     }
 }

@@ -5,13 +5,15 @@
 
     <data>
 
+        <variable
+            name="quizItem"
+            type="com.hbs.worldcup.models.GameLayoutPair" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true">
-
 
         <HorizontalScrollView
             android:id="@+id/scroll_view"
@@ -25,12 +27,13 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/selection_a_image_view"
+                    app:setImg="@{quizItem.firstGameLayout.thumbnail}"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gamjatwigim"
                     android:scaleType="fitXY"
                     app:layout_constraintEnd_toStartOf="@id/selection_b_image_view"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:background="@drawable/gamjatwigim" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/selection_a_title"
@@ -38,18 +41,21 @@
                     android:layout_height="48dp"
                     android:layout_margin="16dp"
                     android:elevation="4dp"
-                    android:text="감자튀김"
+                    android:text="@{quizItem.firstGameLayout.title}"
                     app:chipIcon="@drawable/ic_alphabet_a"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@id/selection_a_image_view" />
+                    app:layout_constraintEnd_toEndOf="@id/selection_a_image_view"
+                    tools:text="감자튀김" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/selection_b_image_view"
+                    app:setImg="@{quizItem.secondGameLayout.thumbnail}"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/burger"
+                    android:scaleType="fitXY"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/selection_a_image_view" />
+                    app:layout_constraintStart_toEndOf="@id/selection_a_image_view"
+                    tools:background="@drawable/burger" />
 
 
                 <com.google.android.material.chip.Chip
@@ -58,10 +64,11 @@
                     android:layout_height="48dp"
                     android:layout_margin="16dp"
                     android:elevation="4dp"
-                    android:text="불고기버거"
+                    android:text="@{quizItem.secondGameLayout.title}"
                     app:chipIcon="@drawable/ic_alphabet_b"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/selection_b_image_view" />
+                    app:layout_constraintStart_toStartOf="@id/selection_b_image_view"
+                    tools:text="새우버거" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
