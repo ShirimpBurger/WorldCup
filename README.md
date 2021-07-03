@@ -42,6 +42,9 @@
 ### ParallaxScrollLayout - version 0.1
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/22374750/114309156-35933d00-9b21-11eb-93e6-817f94dd11ab.gif)
 
+### ParallaxScrollLAyout - version 0.2
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/22374750/124341111-2938f080-dbf5-11eb-8710-3d3e0b84106c.gif)
+
 ### 2021.04.24 메인 화면 업그레이드
 
 ![screen1](https://user-images.githubusercontent.com/22374750/115961615-1e594400-a552-11eb-8159-21c8048ba932.gif)
