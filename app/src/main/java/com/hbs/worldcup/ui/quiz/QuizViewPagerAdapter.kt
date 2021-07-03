@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hbs.worldcup.databinding.QuizItemBinding
-import com.hbs.worldcup.models.GameLayoutPair
+import com.hbs.worldcup.models.GamePair
 import kotlinx.coroutines.*
 import java.util.*
 
 class QuizViewPagerAdapter(
     private val viewModel: QuizViewModel,
 ) :
-    ListAdapter<GameLayoutPair, QuizViewPagerAdapter.ViewHolder>(diffUtil) {
+    ListAdapter<GamePair, QuizViewPagerAdapter.ViewHolder>(diffUtil) {
     private val deviceWidth by lazy {
         Resources.getSystem().displayMetrics.widthPixels
     }
@@ -47,7 +47,7 @@ class QuizViewPagerAdapter(
             } else if (scrollX >= deviceWidth - 50) {
                 job.add(callNextStage(position))
             } else {
-                job.forEach{it.cancel()}
+                job.forEach { it.cancel() }
                 viewModel.sendTime(position, -99999999999999L)
             }
             if (deviceWidth / 2 > scrollX) {
@@ -63,7 +63,7 @@ class QuizViewPagerAdapter(
         return GlobalScope.launch {
             viewModel.sendTime(position, Date().time)
             delay(1_000L)
-            if(isActive) {
+            if (isActive) {
                 viewModel.sendTime(position, Date().time)
             }
         }
@@ -74,12 +74,12 @@ class QuizViewPagerAdapter(
 }
 
 private val diffUtil = object :
-    DiffUtil.ItemCallback<GameLayoutPair>() {
-    override fun areItemsTheSame(oldItem: GameLayoutPair, newItem: GameLayoutPair): Boolean {
+    DiffUtil.ItemCallback<GamePair>() {
+    override fun areItemsTheSame(oldItem: GamePair, newItem: GamePair): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: GameLayoutPair, newItem: GameLayoutPair): Boolean {
+    override fun areContentsTheSame(oldItem: GamePair, newItem: GamePair): Boolean {
         return oldItem == newItem
     }
 }

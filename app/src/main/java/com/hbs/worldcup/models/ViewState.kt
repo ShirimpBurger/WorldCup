@@ -1,8 +1,6 @@
 package com.hbs.worldcup.models
 
-import com.hbs.data.remote.model.ResultResponse
-
-sealed class ViewState<out T : Any> {
+ sealed class ViewState<out T : Any> {
     class Success<out T : Any>(val data: T, val status: Int = 200) : ViewState<T>()
     class Error<out T : Any>(val error: Throwable) : ViewState<T>()
     class Loading<out T : Any> : ViewState<T>()

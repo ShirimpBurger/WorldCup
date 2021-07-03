@@ -1,9 +1,9 @@
 package com.hbs.worldcup.mappers
 
-import com.hbs.data.remote.model.GameEntities
-import com.hbs.data.remote.model.GameEntity
-import com.hbs.worldcup.models.GameLayout
-import com.hbs.worldcup.models.GameLayoutPair
+import com.hbs.domain.model.GameDomain
+import com.hbs.domain.model.GameDomains
+import com.hbs.worldcup.models.Game
+import com.hbs.worldcup.models.GamePair
 import com.hbs.domain.model.SettingDomain
 import com.hbs.worldcup.models.OneLineWithTaskItem
 
@@ -14,13 +14,12 @@ internal fun SettingDomain.toPresentation(): OneLineWithTaskItem {
     )
 }
 
-internal fun GameEntity.toPresentation(): GameLayout {
-    return GameLayout(title, thumbnail)
+internal fun GameDomain.toPresentation(): Game {
+    return Game(title, thumbnail, filed, round, updateAt, -1, -99999999)
 }
 
-internal fun GameEntities.toWindowed(): List<GameLayoutPair> {
+internal fun GameDomains.toWindowed(): List<GamePair> {
     return windowed(2, 2) { gameEntities ->
-        GameLayoutPair(gameEntities[0].toPresentation(), gameEntities[1].toPresentation())
+        GamePair(gameEntities[0].toPresentation(), gameEntities[1].toPresentation())
     }
 }
-

@@ -2,6 +2,7 @@ package com.hbs.worldcup.ui.quiz
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.size
 import androidx.viewpager2.widget.ViewPager2
 import com.hbs.worldcup.R
 import com.hbs.worldcup.core.BaseActivity
@@ -50,9 +51,15 @@ class QuizActivity : BaseActivity<QuizActivityBinding>() {
                 .onLoading {  }
         })
 
-        viewModel.nextStage.observe(this, { stage ->
-            if(-1 != stage.position) {
-                binding.quizViewpager.currentItem = binding.quizViewpager.currentItem + 1
+        viewModel.gameSelectionManager.observe(this, { game ->
+            if(-1 != game.position) {
+                val nextStageRound = binding.quizViewpager.currentItem + 1
+                viewModel.pick(game)
+                if(nextStageRound < binding.quizViewpager.size) {
+                    binding.quizViewpager.currentItem = binding.quizViewpager.currentItem + 1
+                } else {
+                    viewModel.endGameStageOneLines()
+                }
             }
         })
     }

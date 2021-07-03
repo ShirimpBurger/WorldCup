@@ -1,7 +1,8 @@
 package com.hbs.domain.di
 
+import com.hbs.data.local.repository.GameLocalRepository
 import com.hbs.data.local.repository.SettingRepository
-import com.hbs.data.remote.repository.GameRepository
+import com.hbs.data.remote.repository.GameRemoteRepository
 import com.hbs.domain.usecase.GameDataUseCase
 import com.hbs.domain.usecase.GameDataUseCaseImpl
 import com.hbs.domain.usecase.SettingUseCase
@@ -16,8 +17,13 @@ import dagger.hilt.components.SingletonComponent
 object UseCaseModule {
 
     @Provides
-    fun provideSettingUseCase(settingRepository: SettingRepository) : SettingUseCase = SettingUseCaseImpl(settingRepository)
+    fun provideSettingUseCase(settingRepository: SettingRepository): SettingUseCase =
+        SettingUseCaseImpl(settingRepository)
 
     @Provides
-    fun provideGameDataUseCase(gameRepository: GameRepository) : GameDataUseCase = GameDataUseCaseImpl(gameRepository)
+    fun provideGameDataUseCase(
+        gameRemoteRepository: GameRemoteRepository,
+        gameLocalRepository: GameLocalRepository
+    ): GameDataUseCase = GameDataUseCaseImpl(gameRemoteRepository, gameLocalRepository)
+
 }
