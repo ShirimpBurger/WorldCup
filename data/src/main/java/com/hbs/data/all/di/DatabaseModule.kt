@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.hbs.data.local.database.SettingDatabase
+import com.hbs.data.local.database.LocalGameDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,10 +19,10 @@ object DatabaseModule{
     @Singleton
     fun provideSettingDatabase(
         @ApplicationContext context: Context
-    ) : SettingDatabase =
+    ) : LocalGameDatabase =
         Room.databaseBuilder(
             context,
-            SettingDatabase::class.java,
+            LocalGameDatabase::class.java,
             "Setting.db"
         ).addCallback(object : RoomDatabase.Callback() {
             override fun onCreate(db: SupportSQLiteDatabase) {
