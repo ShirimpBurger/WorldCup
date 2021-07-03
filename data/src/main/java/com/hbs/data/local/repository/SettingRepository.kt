@@ -1,6 +1,6 @@
 package com.hbs.data.local.repository
 
-import com.hbs.data.local.database.SettingDatabase
+import com.hbs.data.local.database.LocalGameDatabase
 import com.hbs.data.local.model.SettingEntity
 import javax.inject.Inject
 
@@ -11,7 +11,7 @@ interface SettingRepository {
     suspend fun getAllSettingEntities(): SettingEntities
 }
 
-class SettingRepositoryImpl @Inject constructor(database: SettingDatabase) : SettingRepository {
+class SettingRepositoryImpl @Inject constructor(database: LocalGameDatabase) : SettingRepository {
     private val dao = database.getSettingDao()
     override suspend fun insert(settingEntity: SettingEntity) : Long {
         return dao.insert(settingEntity)
